@@ -16,27 +16,30 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.purple[900],
         title: Center(
           child: Text(
-            'Gimme Paleberree!',
+            'Roll Initiative!',
             style: TextStyle(color: Colors.white),
           ),
         ),
-        leading: Icon(Icons.notification_add),
+        leading: Icon(Icons.catching_pokemon),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(25.0),
-        child: SizedBox(
-          height: double.infinity,
-          child: Stack(
-            children: [
-              SizedBox(child: Center(child: Text('players.roll(initiative);'))),
-              ListTile(
-                tileColor: Colors.deepPurpleAccent,
-                title: Text('FIREBALL!'),
-              ),
-            ],
-          ),
-        ),
+      body: Wrap(
+        children: [
+          Text('FIREBALL!'),
+          Text('FIREBALL!'),
+          Text('FIREBALL!'),
+          Text('FIREBALL!'),
+          Text('FIREBALL!'),
+          Text('FIREBALL!'),
+          Text('FIREBALL!'),
+          Text('FIREBALL!'),
+          Text('FIREBALL!'),
+          Text('FIREBALL!'),
+          Text('FIREBALL!'),
+          Text('FIREBALL!'),
+          Text('FIREBALL!'),
+        ],
       ),
+
       // body
     );
   }
@@ -48,4 +51,6 @@ class _HomeScreenState extends State<HomeScreen> {
  * Stack: Widgets übereinander
  * Sized Box: NUR w & h
  * ListTile:
+ *  trailing: am Ende
+ * Wrap: wrap content around
  */
