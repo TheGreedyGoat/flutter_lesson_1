@@ -3,84 +3,6 @@ import 'package:flutter/material.dart';
 void myMain() {
   runApp(const MyStatefulApp());
 }
-// ===CONTENTS===
-// stateless
-// stateful
-// setstate
-
-// material app
-// scaffold
-
-//! =====================STATELESS==============================//
-class MyStatelessApp extends StatelessWidget {
-  const MyStatelessApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.teal,
-          brightness: Brightness.dark,
-        ),
-      ),
-      home: Scaffold(
-        //=======APPBAR=========//
-        appBar: AppBar(
-          title: Text('My Stateless App'),
-          centerTitle: true,
-          leading: Icon(Icons.catching_pokemon),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Icon(Icons.login),
-            ),
-          ],
-          backgroundColor: Colors.teal,
-        ),
-        //=======DRAWER================//
-        drawer: SafeArea(
-          //? Widget does not extend over the phone's top bar
-          child: Drawer(
-            child: Column(children: [ListTile(title: Text('Logout'))]),
-          ),
-        ),
-        //=======Floating Action Button=========//
-        floatingActionButton: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            FloatingActionButton(
-              onPressed: () {
-                print('add');
-              },
-              child: Icon(Icons.add),
-            ),
-            SizedBox(height: 8.0),
-            FloatingActionButton(
-              onPressed: () {
-                print('remove');
-              },
-              child: Icon(Icons.remove),
-            ),
-          ],
-        ),
-        //=======NAVIGATION BAR=========//
-        bottomNavigationBar: NavigationBar(
-          destinations: [
-            NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-            NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
-          ],
-          onDestinationSelected: (int value) {
-            print(value);
-          },
-          selectedIndex: 0, //? wich destination is selected
-        ),
-      ),
-    );
-  }
-}
-
-//! =====================STATEFUL==============================//
 
 class MyStatefulApp extends StatefulWidget {
   const MyStatefulApp({super.key});
@@ -126,7 +48,7 @@ class _MyStatefulAppState extends State<MyStatefulApp> {
           backgroundColor: Colors.teal,
         ),
         body: getContent(),
-        //=======DRAWER================//
+        //=============DRAWER================//
         drawer: SafeArea(
           //? Widget does not extend over the phone's top bar
           child: Drawer(
