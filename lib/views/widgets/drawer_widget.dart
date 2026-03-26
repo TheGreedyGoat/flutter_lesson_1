@@ -25,7 +25,7 @@ class DrawerWidget extends StatelessWidget {
                 },
               ),
             ),
-            Text('Color Schemes:'),
+            Text('Themes', style: TextStyle(fontSize: 20.0)),
             Expanded(child: ColorSchemeWidget()),
           ],
         ),
