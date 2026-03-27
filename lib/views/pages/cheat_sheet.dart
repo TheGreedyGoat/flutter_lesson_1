@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_lesson_1/views/widgets/cheat_sheet_widgets/bool_widgets.dart';
+import 'package:flutter_lesson_1/views/widgets/cheat_sheet_widgets/button_widgets.dart';
 
 class CheatSheet extends StatefulWidget {
   const CheatSheet({super.key, required this.title});
@@ -10,9 +12,10 @@ class CheatSheet extends StatefulWidget {
 
 class _CheatSheetState extends State<CheatSheet> {
   TextEditingController controller = TextEditingController();
-  bool? isChecked = false;
-  bool isSwitched = false;
+  String textfieldInput = 'none yet';
+
   double sliderValue = 0.0;
+  double sliderValueDivided = 0.0;
   String? menuItem = 'i1';
   @override
   Widget build(BuildContext context) {
@@ -72,44 +75,42 @@ class _CheatSheetState extends State<CheatSheet> {
               //=============TEXT FIELD(INPUT)===================//
               TextField(
                 controller: controller,
+
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(2)),
                   ),
+                  hint: Text(
+                    'InputDecoration(hint: ... )',
+                    style: TextStyle(color: Theme.of(context).hintColor),
+                  ), //?placeholder text
                 ),
-                onEditingComplete: () => setState(() {}),
+                onEditingComplete: () => setState(() {
+                  textfieldInput = controller.text;
+                  FocusManager.instance.primaryFocus?.unfocus();
+                  //? unfocuses the Teextfield and hides keyboard
+                  controller.clear();
+                }),
               ),
-              Text(
-                isChecked != null && isChecked! ? controller.text : "GEHEIM!",
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text('last submitted input: $textfieldInput'),
               ),
-              //=============CHECK BOX LIST TILE===================//
-              CheckboxListTile(
-                tristate: true,
-                title: Text('CheckboxListTile'),
-                value: isChecked,
-                onChanged: (bool? value) {
-                  setState(() {
-                    isChecked = value;
-                    print(value);
-                  });
-                },
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: BoolWidgets(),
+                ),
               ),
-
-              //=============SWITCH LIST TILE===================//
-              SwitchListTile.adaptive(
-                //? adaptive: use OS- style
-                title: Text('SwitchListTile'),
-                value: isSwitched,
-                onChanged: (bool value) {
-                  setState(() {
-                    isSwitched = value;
-                  });
-                },
-              ),
-              Text('Slider'),
+              Text('Slider: $sliderValue'),
               Slider(
                 max: 10.0,
-                divisions: 10,
                 value: sliderValue,
                 onChanged: (double value) {
                   setState(() {
@@ -118,50 +119,32 @@ class _CheatSheetState extends State<CheatSheet> {
                   // print(value);
                 },
               ),
+              Text('Slider (divisions): $sliderValueDivided'),
+              Slider(
+                max: 10.0,
+                divisions: 10,
+                value: sliderValueDivided,
+                onChanged: (double value) {
+                  setState(() {
+                    sliderValueDivided = value;
+                  });
+                  // print(value);
+                },
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ButtonWidgets(),
+                ),
+              ),
 
               //=============GESTURE DETECTOR===================//
-              GestureDetector(
-                //? makes any widget interactive
-                onTap: () {
-                  print('image tapped');
-                },
-                child: Container(
-                  height: 50,
-                  width: double.infinity,
-                  color: Theme.of(context).colorScheme.onPrimary,
-                  child: Text('GestureDetector'),
-                ),
-              ),
-              SizedBox(height: 8.0),
-              InkWell(
-                //? clickable with splash effect
-                splashColor: Theme.of(context).colorScheme.primary,
-                onTap: () {
-                  print('image tapped');
-                },
-                child: Container(
-                  height: 50,
-                  width: double.infinity,
-                  color:
-                      Colors.black12, //Theme.of(context).colorScheme.onPrimary,
-                  child: Text('InkWell'),
-                ),
-              ),
-              //==============BUTTON TYPES=============//
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Theme.of(context).colorScheme.tertiary,
-                  foregroundColor: Theme.of(context).colorScheme.onPrimary,
-                ),
-                child: Text('Elevated Button styled'),
-              ),
-              ElevatedButton(onPressed: () {}, child: Text('Elevated Button')),
-              FilledButton(onPressed: () {}, child: Text('Filled Button')),
-              TextButton(onPressed: () {}, child: Text('Text Button')),
-              OutlinedButton(onPressed: () {}, child: Text('Outlined Button')),
-              Row(children: [CloseButton(), Text('Close Button')]),
-              Row(children: [BackButton(), Text('Back Button')]),
             ],
           ),
         ),
