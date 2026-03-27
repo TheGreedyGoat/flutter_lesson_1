@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lesson_1/data/notifiers.dart';
-import 'package:flutter_lesson_1/matApp_scaffold_stateless.dart';
 import 'package:flutter_lesson_1/views/widget_tree.dart';
 
 void main() {
