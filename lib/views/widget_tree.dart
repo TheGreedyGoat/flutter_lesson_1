@@ -8,10 +8,11 @@ import 'package:flutter_lesson_1/views/pages/home_page.dart';
 import 'package:flutter_lesson_1/views/pages/cheat_sheet.dart';
 
 const List<Widget> pages = [HomePage(), ProfilePage()];
-const List<String> pageTitles = ['Home', 'Profile'];
+const List<String> pageTitles = ['Home', 'Profile of '];
 
 class WidgetTree extends StatelessWidget {
-  const WidgetTree({super.key});
+  final String username;
+  const WidgetTree({super.key, required this.username});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,10 @@ class WidgetTree extends StatelessWidget {
       builder: (context, selectedPage, child) {
         return Scaffold(
           appBar: AppBar(
-            title: Center(child: Text(pageTitles[selectedPage])),
+            centerTitle: true,
+            title: Text(
+              pageTitles[selectedPage] + (selectedPage == 1 ? username : ''),
+            ),
             automaticallyImplyLeading: false,
             actions: [
               //? switch to another page
@@ -42,7 +46,7 @@ class WidgetTree extends StatelessWidget {
             backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           ),
           body: pages[selectedPage],
-          bottomNavigationBar: NavbarWidget(),
+          bottomNavigationBar: NavbarWidget(username: username),
           drawer: DrawerWidget(),
 
           floatingActionButton: selectedPage == 0

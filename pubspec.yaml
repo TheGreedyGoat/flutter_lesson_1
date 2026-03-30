@@ -74,9 +74,12 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
 fonts:
- - family: SansCode
-   fonts:
-    - asset: fonts/PixelifySans.ttf
+  - family: Bookinsanity
+    fonts:
+      - asset: assets/fonts/bookinsanity.ttf
+  - family: Pixelify
+    fonts: 
+      -asset: assets/fonts/pixelify_sans.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

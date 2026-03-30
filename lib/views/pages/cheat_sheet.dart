@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lesson_1/views/widgets/cheat_sheet_widgets/bool_widgets.dart';
 import 'package:flutter_lesson_1/views/widgets/cheat_sheet_widgets/button_widgets.dart';
+import 'package:flutter_lesson_1/views/widgets/cheat_sheet_widgets/snack_bar_widget.dart';
 
 class CheatSheet extends StatefulWidget {
   const CheatSheet({super.key, required this.title});
@@ -143,8 +144,15 @@ class _CheatSheetState extends State<CheatSheet> {
                   child: ButtonWidgets(),
                 ),
               ),
-
-              //=============GESTURE DETECTOR===================//
+              Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.inversePrimary,
+                  ),
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
+                child: SnackBarWidget(),
+              ),
             ],
           ),
         ),

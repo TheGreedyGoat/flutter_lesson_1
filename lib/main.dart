@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lesson_1/data/notifiers.dart';
-import 'package:flutter_lesson_1/views/widget_tree.dart';
+import 'package:flutter_lesson_1/views/pages/welcome_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,8 +31,9 @@ class _MyAppState extends State<MyApp> {
                       ? Brightness.dark
                       : Brightness.light,
                 ),
+                fontFamily: 'Pixelify',
               ),
-              home: WidgetTree(),
+              home: WelcomePage(),
             );
           },
         );
